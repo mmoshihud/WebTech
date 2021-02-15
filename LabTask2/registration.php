@@ -49,13 +49,16 @@
 
     <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
         <label for="name">Name: </label>
-        <input type="text" id="name" name="name"><br><br>
+        <input type="text" id="name" name="name">
+        <?php echo $validatename; ?><br><br>
         <label for="email">Email: </label>
-        <input type="text" id="email" name="email"><br><br>
+        <input type="text" id="email" name="email">
+        <?php echo $validateemail; ?><br><br>
         <label for="username">User Name:</label>
         <input type="text" id="username" name="username"><br><br>
         <label for="password">Password:</label>
-        <input type="text" id="password" name="password"><br><br>
+        <input type="text" id="password" name="password">
+        <?php echo $validatepassword; ?><br><br>
         <label for="confirmpassword">Confirm Password: </label>
         <input type="text" id="confirmpassword" name="confirmpassword"><br><br>
         <label for="gender">Gender:</label>
