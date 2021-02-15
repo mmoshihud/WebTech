@@ -9,7 +9,50 @@
 
     <h1>Registration</h1>
 
-    <form>
+    <?php
+    $validatename = "";
+    $validateemail = "";
+    $validatecheckbox = "";
+    $validateradio = "";
+    $validategender = "";
+    $v1 = $v2 = $v3 = "";
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $name = $_REQUEST["fname"];
+        $email = $_REQUEST["email"];
+
+        if (empty($name) || strlen($name) < 3) {
+            $validatename = "you must enter valid name";
+        } else {
+            $validatename = "your name is " . $name;
+        }
+
+        if (empty($email) || !preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i", $email)) {
+            $validateemail = "your must enter valid email";
+        } else {
+            $validateemail = "your email is " . $email;
+        }
+
+        if (!isset($_REQUEST["vehicle1"]) && !isset($_REQUEST["vehicle2"]) && !isset($_REQUEST["vehicle3"])) {
+            $validatecheckbox = "please select at least one checkbox";
+        } else {
+            if (isset($_REQUEST["vehicle1"])) {
+                $v1 = $_REQUEST["vehicle1"];
+            }
+            if (isset($_REQUEST["vehicle2"])) {
+                $v2 = $_REQUEST["vehicle2"];
+            }
+            if (isset($_REQUEST["vehicle3"])) {
+                $v3 = $_REQUEST["vehicle3"];
+            }
+        }
+
+        if (!isset($_REQUEST["gender"])) {
+            $validategender = "Please select your gender";
+        }
+    }
+    ?>
+
+    <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
         <label for="fname">First name:</label>
         <input type="text" id="fname" name="fname"><br><br>
         <label for="email">Email:</label>
