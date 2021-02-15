@@ -15,10 +15,14 @@
     $validatecheckbox = "";
     $validateradio = "";
     $validategender = "";
-    $v1 = $v2 = $v3 = "";
+    $validatepassword = "";
+    $confirmpassword = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $name = $_REQUEST["name"];
         $email = $_REQUEST["email"];
+        $password = $_REQUEST["password"];
+        $cpassword = $_REQUEST["confirmpassword"];
+
 
         if (empty($name) || strlen($name) < 3) {
             $validatename = "you must enter valid name";
@@ -31,19 +35,10 @@
         } else {
             $validateemail = "your email is " . $email;
         }
-
-        if (!isset($_REQUEST["vehicle1"]) && !isset($_REQUEST["vehicle2"]) && !isset($_REQUEST["vehicle3"])) {
-            $validatecheckbox = "please select at least one checkbox";
+        if (empty($password) || !preg_match("/(?=.*[@#$%]).*$/", $password)) {
+            $validatepassword = "your Password must contain one special character";
         } else {
-            if (isset($_REQUEST["vehicle1"])) {
-                $v1 = $_REQUEST["vehicle1"];
-            }
-            if (isset($_REQUEST["vehicle2"])) {
-                $v2 = $_REQUEST["vehicle2"];
-            }
-            if (isset($_REQUEST["vehicle3"])) {
-                $v3 = $_REQUEST["vehicle3"];
-            }
+            $validatepassword = "your email is " . $email;
         }
 
         if (!isset($_REQUEST["gender"])) {
