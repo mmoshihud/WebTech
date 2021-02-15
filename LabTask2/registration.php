@@ -17,7 +17,7 @@
     $validategender = "";
     $v1 = $v2 = $v3 = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $name = $_REQUEST["fname"];
+        $name = $_REQUEST["name"];
         $email = $_REQUEST["email"];
 
         if (empty($name) || strlen($name) < 3) {
@@ -53,14 +53,16 @@
     ?>
 
     <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
-        <label for="fname">First name:</label>
-        <input type="text" id="fname" name="fname"><br><br>
-        <label for="email">Email:</label>
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="email">Email: </label>
         <input type="text" id="email" name="email"><br><br>
         <label for="username">User Name:</label>
         <input type="text" id="username" name="username"><br><br>
         <label for="password">Password:</label>
         <input type="text" id="password" name="password"><br><br>
+        <label for="confirmpassword">Confirm Password: </label>
+        <input type="text" id="confirmpassword" name="confirmpassword"><br><br>
         <label for="gender">Gender:</label>
         <input type="radio" id="male" name="gender" value="male">
         <label for="male">Male</label>
@@ -68,7 +70,8 @@
         <label for="female">Female</label>
         <input type="radio" id="other" name="gender" value="other">
         <label for="other">Other</label><br><br>
-
+        <label for="birthday">Birthday:</label>
+        <input type="date" id="birthday" name="birthday"><br><br>
         <input type="submit" value="Submit">
         <input type="reset" value="Reset">
     </form>
